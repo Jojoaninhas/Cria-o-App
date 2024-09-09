@@ -1,17 +1,16 @@
 import {NavigationContainer} from '@react-navigation/native';
 import Routers from './src/routers/routers';
-import AuthContext from './src/Contexts/auth';
+import AuthContext, { AuthProvider } from './src/Contexts/auth';
+import { StatusBar } from 'expo-status-bar';
 
 export default function App() {
   return (
     <NavigationContainer>
-      <AuthContext.Provider value= {
-      {signed:true,
-       token:"Logado",
-       email: "papito@gmail.com"
-      }}>
-      <Routers/>
-      </AuthContext.Provider>
+      <AuthProvider>
+        <Routers/>
+        <StatusBar style="auto" />
+      </AuthProvider>
+      
     </NavigationContainer>
 
   );
